@@ -7,7 +7,7 @@ class CountryList extends React.Component {
 
     return (
       <ul>
-        { countries.map((country) => <li>country.translations.br</li>) }
+        { countries.map((country) => <li><span></span>{country.translations.br}</li>) }
       </ul>
     )
   }

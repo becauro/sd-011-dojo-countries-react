@@ -12,17 +12,24 @@ class App extends React.Component {
     }
   }
 
-  async fetchCountries()
+  async getCountries() {
+    const countries = await fetchCountries();
+    this.setState({
+      countries,
+    })
+  }
   
   componentDidMount() {
-
+    this.getCountries();
   }
 
   render() {
+    const { countries } = this.state;
+
     return (
       <main>
         <h1>Lista de países</h1>
-        <CountryList countries />
+        <CountryList countries={ countries } />
       </main>
     )
   }
