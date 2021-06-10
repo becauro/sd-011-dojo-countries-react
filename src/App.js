@@ -26,13 +26,16 @@ class App extends React.Component {
     if (loading) {
       return <p>Loading...</p>;
     }
-    console.log(api[0].translations.br);
+    console.log(api[0]);
     return (
       <main>
         <h1>Lista de países</h1>
         <ul>
-          {api.map(({ translations }) => (
-            <li key={translations.br}>{translations.br}</li>
+          {api.map(({ translations, flag }) => (
+            <li key={translations.br}>
+              <img width="30px" src={flag} alt={translations.br} />
+              {translations.br}
+            </li>
           ))}
         </ul>
       </main>
