@@ -1,11 +1,21 @@
 import React from 'react';
-import { fetchCountries } from './components/CountriesList';
+import { fetchCountries } from '../services/countries';
 
 class CountriesList extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      countries: data,
+    }
+  }
 
   render() {
-    { console.log(fetchCountries()); }
-    return ();
+    const countrie = fetchCountries();
+    console.log(countrie.then(data => {countries: data} );
+    return (
+      <h1>Hello World</h1>
+    );
   }
 }
 
