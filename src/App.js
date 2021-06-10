@@ -26,8 +26,12 @@ class App extends React.Component {
     return (
       <main>
         
-       {countries.map((countrie)=> <h1>{countrie.translations.br} </h1>)}
-
+       {countries.map((countrie)=> { 
+       <div>
+       <h1>{countrie.translations.br} </h1>
+       <img src={countrie.flag} />
+       </div>})
+       }
       </main>
     );
   }
