@@ -20,7 +20,16 @@ class CountriesList extends React.Component {
 
   render(){
     return (
-      
+      <div>
+        <ul>
+          countries.map((countrie) => {
+            <Licountrie  countrie= {countrie.name}/>
+          }
+                
+        </ul>
+          
+
+      </div>
     )
 
   }
