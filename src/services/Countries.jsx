@@ -1,7 +1,6 @@
-import React from 'react';
-import { fetchCountries } from './services/countries'
+import React, { Component } from 'react';
 
-class Countries extends React.Component {
+class Countries extends Component {
   constructor() {
     super();
     
@@ -10,22 +9,32 @@ class Countries extends React.Component {
     }
     this.fetchCountries = this.fetchCountries.bind(this);
   }
-  
-  fetchCountries() {
-    fetch('https://restcountries.eu/rest/v2/all').then(res => res.json());
-  }
 
   componentDidMount() {
-    
+    this.fetchCountries();
   }
 
-
+  fetchCountries() {
+    fetch('https://restcountries.eu/rest/v2/all')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        countries: data,
+      })
+    });
+  }
 
   render() {
-    const countries = this.fetchCountries();
+    const { countries } = this.state;
     return (
       <main>
-        <h1>{ countries }</h1>
+        { countries.map(({ translations, flag }) => (
+          <div>
+            <p>{translations.br}</p>
+            <img src={flag} style={{width:"250px"}} />
+          </div>
+        )) 
+        }
       </main>
     )
   }
