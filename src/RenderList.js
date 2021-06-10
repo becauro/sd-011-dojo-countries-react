@@ -7,11 +7,13 @@ export default class RenderList extends Component {
   
     this.state = {
       countryList: [],
+      loading: true,
     }
+    this.setInitialState = this.setInitialState.bind(this)
+    this.renderMapList = this.renderMapList.bind(this)
   }
 
   
-
   renderMapList(array) {
     return array.map(({ translations: { br }, flag }, index ) => {
       <div>
@@ -21,17 +23,23 @@ export default class RenderList extends Component {
     });
   }
 
+  setInitialState(response) {
+    this.setState((state) => ({
+      countryList: [...response, state.countryList],
+      loading: false,
+    }))
+  }
+
   async componentDidMount() {
     const data = await fetchCountries();
-    console.log(data);
-    const { translations: { br }, flag } = data;
-    
+    this.setInitialState(data);
   }
 
   render() {
+    const {loading, countryList} = this.state;
     return (
       <div>
-        
+        { loading ? this.renderMapList(countryList) : <p>Loading...</p> }
       </div>
     )
   }
