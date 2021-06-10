@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import apiCountries from './services/countries';
+import * as apiCountries from './services/countries';
 
 class App extends React.Component {
   constructor(){
@@ -26,7 +26,6 @@ class App extends React.Component {
 
   render() {
     const { countryList } = this.state;
-    console.log(countryList);
     return (
       <main>
         <h1>Lista de países</h1>
