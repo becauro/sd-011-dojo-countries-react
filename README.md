@@ -1,4 +1,4 @@
-# Dojo - Countries API
+# Dojo - Countries API!
 
 Esse repositório contém a descrição do exercício prático para a Turma 11! Faremos um [Dojo](https://pt.wikipedia.org/wiki/Coding_Dojo) para que esse exercício seja resolvido em grupos.
 
