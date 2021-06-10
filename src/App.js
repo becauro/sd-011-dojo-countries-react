@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      list: [],
+      list: {},
     }
     this.getList = this.getList.bind(this);
   }
@@ -19,7 +19,7 @@ class App extends React.Component {
   async getList(){
     const countriesList = await countries.fetchCountries();
     this.setState({
-      list: countriesList,
+      list: countriesList.name,
     })
   }
 
