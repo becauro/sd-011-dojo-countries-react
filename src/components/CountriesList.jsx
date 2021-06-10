@@ -13,19 +13,22 @@ export default class CountriesList extends Component {
     }
   componentDidMount() {
     this.fetchAPICountries()
-    console.log(this.state.countries);
   }
 
-  fetchAPICountries(){
-    const data = fetchCountries();
+  async fetchAPICountries(){
+    const data = await fetchCountries();
     this.setState({
-      countries: [data],
+      countries: [...data],
     })
+    // console.log(this.state.countries)
   }
 
   render() {
+    const { countries } = this.state;
+
     return (
       <div>
+        { countries.map((countrie) => <p>{countrie.translate.br}</p>)}
       </div>
     )
   }
