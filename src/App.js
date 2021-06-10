@@ -23,8 +23,13 @@ class App extends React.Component {
   }
 
   changeFilterCountry(e) {
-    this.setState({
-      filterCountry: e.target.value,
+    const filterCountry = e.target.value
+    this.setState((prevState) => {
+      const filteredCountries = prevState.countries.filter(({ translations: { br } }) => br.includes(filterCountry))
+      return {
+        filterCountry,
+        countries: filteredCountries
+      }
     })
   }
   
