@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-// Começando projeto
+// Começando projeto.
 
 class App extends React.Component {
   render() {
