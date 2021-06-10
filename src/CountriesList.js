@@ -2,15 +2,18 @@ import React from 'react';
 import Countries from './services/countries';
 
 class CountriesList extends React.Component {
-    componentDidMount() {
-        const { fetchCountries } = Countries;
-        const countriesList = fetchCountries();
+
+
+    async componentDidMount() {
+        
+        const newCountries = await Countries();
+        console.log(newCountries)
     }
     
     render() {
         return(
             <div>
-              {countriesList}  
+              {/* { countriesList}   */}
             </div>            
         )        
     }
