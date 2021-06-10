@@ -11,7 +11,7 @@ class Paises extends React.Component {
   async componentDidMount() {
     const paises = await fetchCountries()
     this.setState({  
-      countries: fetchCountries()
+      countries: paises,
     })
   }
 
