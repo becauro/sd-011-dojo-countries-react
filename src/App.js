@@ -1,4 +1,5 @@
 import React from 'react';
+import { fetchCountries } from './services/countries';
 import './App.css';
 
 class App extends React.Component {
