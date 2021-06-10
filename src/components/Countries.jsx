@@ -4,15 +4,23 @@ import { fetchCountries } from '../services/countries';
 export default class Countries extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      countries: [],
+    };
   }
 
   componentDidMount() {
     console.log(fetchCountries())
-    fetchCountries().then(r=>console.log(r))
+    const arrayOfCoutries = [];
+    fetchCountries()
+    .then(response => this.setState({
+      countries: response.map((countrie) => arrayOfCoutries.push(countrie.translations.br))
+    )}
   }
 
+
   render() {
-    return <div></div>;
+    console.log(this.state.countries)
+    return 
   }
 }
