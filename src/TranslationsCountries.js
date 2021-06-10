@@ -6,6 +6,7 @@ class TranslationsCountries extends React.Component {
     super()
     this.state ={
       countries: [],
+      flags: [],
     }
     this.getCountries = this.getCountries.bind(this)
   }
@@ -19,18 +20,20 @@ class TranslationsCountries extends React.Component {
     
     const paises = countries.map((country) => country.translations.br);
     console.log(paises);
+    const flags = countries.map((country) => country.flag);
     this.setState( {
       countries: paises,
+      flags: flags,
     })
     console.log(this.state)
   }
 
   render() {
-    const { countries } = this.state;
+    const { countries, flags } = this.state;
     return (
       <div>
         <ol>
-          { countries.map((pais) => <li>{ pais }</li>) }
+          { countries.map((pais, index) => <li>{ pais } { flags[index]}</li>) }
         </ol>
       </div>
     )
