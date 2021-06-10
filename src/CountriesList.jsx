@@ -1,10 +1,20 @@
 import React from 'react';
 import Countries from './services/countries';
 
+
+
 const CountriesList = () => {
-  // const list = await Countries.fetchCountries();
-  console.log(Countries);
-  return <div>oi</div>;
+
+  async function fetchCountries() {
+    const promise = await Countries()
+    console.log(promise);
+  }
+  fetchCountries()
+  return (
+  <div>
+    oi
+  </div>
+  );
 };
 
 export default CountriesList;
