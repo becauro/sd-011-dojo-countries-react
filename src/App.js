@@ -1,24 +1,24 @@
 import React from 'react';
 import './App.css';
-import Countries, { fetchCountries } from './services/countries';
+import { fetchCountries } from './services/countries';
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
       countries: [],
+      loading: true,
     }
   }
 
-  componentDidMount(){
-  fetchCountries()
-  .then((data) => {
+  async componentDidMount(){
+    const countries = await fetchCountries()
     this.setState({
-      countries: data,
+      countries: countries,
+      loading: false,
     })
-  })
-  console.log()
-}
+  console.log(this.state.countries);
+  }
 
   render() {
     return (
