@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchCountries } from './services/countries';
+import './Countries.css';
 
 class Countries extends React.Component {
   constructor() {
@@ -27,7 +28,14 @@ class Countries extends React.Component {
       <div>
         <h1>Countries</h1>
         <ul>
-          { countries.map((country, index) => <li key={ index }>{ country.translations.br }</li>) }
+          { countries.map((country, index) => (
+            <li key={ index }>
+              <img src={ country.flag } alt={ `${country.translations.br} bandeira` } className="flag-image" />
+              { country.translations.br }
+            </li>
+
+          )) 
+          }
         </ul>
       </div>
     )
