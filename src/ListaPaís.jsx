@@ -3,8 +3,8 @@ import País from './País';
 import { fetchCountries } from './services/countries';
 
 class ListaPaís extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       arrayPaises: [],
@@ -15,17 +15,12 @@ class ListaPaís extends Component {
 
   async GetPaises() {
     const paises = await fetchCountries();
-    let arrayDePaises = [];
-    let arrayFlag = [];
 
     paises.map((pais) => {
-      arrayDePaises.push(pais.translations.br);
-      arrayFlag.push(pais.flag);
-    });
-
-    this.setState({
-      arrayPaises: arrayDePaises,
-      flagLink: arrayFlag,
+      this.setState((previousState) => ({
+        arrayPaises: previousState.arrayPaises.concat(pais.translations.br),
+        flagLink: previousState.flagLink.concat(pais.flag),
+      }));
     });
   }
 
@@ -34,11 +29,12 @@ class ListaPaís extends Component {
   }
 
   render() {
+    const { arrayPaises, flagLink } = this.state;
 
     return (
       <ul>
-        {this.state.arrayPaises.map((pais, index) => {
-          return <País pais={pais} flag={this.state.flagLink[index]} />;
+        {arrayPaises.map((pais, index) => {
+          return <País pais={ pais } flag={ flagLink[index] } />;
         })}
       </ul>
     );
