@@ -6,6 +6,7 @@ class App extends React.Component {
     return (
       <main>
         <h1>Lista de países </h1>
+        
       </main>
     )
   }
