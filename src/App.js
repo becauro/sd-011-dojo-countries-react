@@ -7,7 +7,8 @@ class App extends React.Component {
     super();
 
     this.state = {
-      countries: {},
+      countries: [],
+      pais: '',
     }
   }
 
@@ -23,7 +24,7 @@ class App extends React.Component {
     return (
       <main>
         <ul>
-        {countries.map((countrie) => <li>{countrie.name}</li>)}
+        {countries.map((countrie) => <li><img src={ countrie.flag } width="50px"/>{countrie.translations.br}</li>)}
         </ul>
       </main>
     )
