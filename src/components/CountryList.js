@@ -6,9 +6,11 @@ class CountryList extends React.Component {
     const { countries } = this.props;
 
     return (
-      <ul>
-        { countries.map((country) => <li><span></span>{country.translations.br}</li>) }
-      </ul>
+      <>
+        <ul>
+          { countries.map((country, index) => <li key={ index }><span></span>{country.translations.br}</li>) }
+        </ul>
+      </>
     )
   }
 }

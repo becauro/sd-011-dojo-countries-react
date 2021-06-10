@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchCountries } from './services/countries';
 import CountryList from './components/CountryList';
-import './App.css';
+import Searchbox from './components/Searchbox';
 
 class App extends React.Component {
   constructor() {
@@ -9,6 +9,7 @@ class App extends React.Component {
 
     this.state = {
       countries: [],
+      searchField: '',
     }
   }
 
@@ -24,12 +25,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { countries } = this.state;
+    const { countries, searchField } = this.state;
+    const filteredCountries = countries.filter(country => (
+      country.translations.br.toLowerCase().includes(searchField.toLowerCase())
+    ))
 
     return (
       <main>
         <h1>Lista de países</h1>
-        <CountryList countries={ countries } />
+        <Searchbox handleChange={(e) => this.setState({searchField: e.target.value})} />
+        <CountryList countries={ filteredCountries } />
       </main>
     )
   }
