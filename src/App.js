@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Countries from './services/countries';
+import Countries, { fetchCountries } from './services/countries';
 
 class App extends React.Component {
   constructor() {
@@ -9,6 +9,17 @@ class App extends React.Component {
       countries: [],
     }
   }
+
+  componentDidMount(){
+  fetchCountries()
+  .then((data) => {
+    this.setState({
+      countries: data,
+    })
+  })
+  console.log()
+}
+
   render() {
     return (
       <main>
