@@ -9,18 +9,23 @@ export default class CountriesList extends Component {
         countries: [],
       };
 
+      this.fetchAPICountries = this.fetchAPICountries.bind(this);
     }
-  componentDidMount {
+  componentDidMount() {
+    this.fetchAPICountries()
+    console.log(this.state.countries);
+  }
+
+  fetchAPICountries(){
+    const data = fetchCountries();
     this.setState({
-      countries: 
-    });
-    fetchCountries()
+      countries: [data],
+    })
   }
 
   render() {
     return (
       <div>
-        {console.log(fetchCountries())}
       </div>
     )
   }
