@@ -3,12 +3,26 @@ import fetchCountries from './services/countries';
 import React from 'react';
 
 class Paises extends React.Component {
+  constructor() {
+    super()
+    this.state = { countries: [] }  
+  }
+
+  async componentDidMount() {
+    const paises = await fetchCountries()
+    this.setState({  
+      countries: fetchCountries()
+    })
+  }
+
   render() {
-    console.log(fetchCountries());
+    const { countries } = this.state;
+
+    console.log(countries);
     return (
       <ul>
         {
-          fetchCountries().then((Paises) => Paises.map((pais) => (<li>{pais.translations.br}</li>)))
+          <h1>Olá mundo</h1>
         }
       </ul>
     );
