@@ -7,20 +7,32 @@ export default class CountriesList extends Component {
     this.state = {
       countries: [],
     }
+    this.catchCountries = this.catchCountries.bind(this);
   }
 
   componentDidMount(){
-this.catchCountries();
+    this.catchCountries();
   }
   
   catchCountries() {
-    fetchCountries().then(response=>console.log(response)) 
+    fetchCountries().then(response => {
+      this.setState({
+        countries: response,
+      })
+    }) 
     
   }
   render() {
+    const { countries } = this.state;
     return (
       <div>
+        <ul>
+        {countries.map(({ flag, translations: { br } }) => {
+          <li>
 
+          </li>
+        })}
+        </ul>
       </div>
     );
   }
