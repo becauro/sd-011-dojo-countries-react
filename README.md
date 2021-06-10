@@ -52,7 +52,7 @@ git pull origin equipe-9
 
 ## Instruções do exercício
 
-Vocês farão uma pequena aplicação com a API de países que se escontra [aqui](https://restcountries.eu/)
+Vocês farão uma pequena aplicação com a API de países que se escontra [aqui](https://restcountries.eu/).
 
 ### Requisito 1
 
