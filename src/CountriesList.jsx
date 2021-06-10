@@ -1,7 +1,6 @@
 import React from 'react';
-import Countries from './services/countries';
 
-console.log(Co);
+console.log();
 
 const CountriesList = () => {
   
