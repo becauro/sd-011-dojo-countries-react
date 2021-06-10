@@ -3,23 +3,24 @@ import './App.css';
 import * as countries from './services/countries';
  
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
 
     this.state = {
-      list: {},
+      list: [],
     }
     this.getList = this.getList.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getList();  
   }
 
-  async getList(){
+  async getList() {
     const countriesList = await countries.fetchCountries();
+
     this.setState({
-      list: countriesList.name,
+      list: countriesList,
     })
   }
 
@@ -29,7 +30,9 @@ class App extends React.Component {
       <main>
         <h1>Lista de países</h1>
         <ol>
-          { list }
+          { list.map((country) => {
+            <li>{country.name}</li>
+          }) }
         </ol>
       </main>
     )
