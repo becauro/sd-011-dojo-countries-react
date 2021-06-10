@@ -16,16 +16,22 @@ class TranslationsCountries extends React.Component {
 
   async getCountries(){
     const countries = await fetchCountries()
-    this.setState({
-      countries: countries.name
+    
+    const paises = countries.map((country) => country.translations.br);
+    console.log(paises);
+    this.setState( {
+      countries: paises,
     })
     console.log(this.state)
   }
 
   render() {
+    const { countries } = this.state;
     return (
       <div>
-        Translations
+        <ol>
+          { countries.map((pais) => <li>{ pais }</li>) }
+        </ol>
       </div>
     )
   }
