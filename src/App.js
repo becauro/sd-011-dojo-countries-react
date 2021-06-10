@@ -10,25 +10,24 @@ class App extends React.Component {
       countries: [],
     };
 
-    
   }
 
-componentDidMount() {
-  const list = fetchCountries().then();
+async componentDidMount() {
+  const list = await fetchCountries();
   this.setState({
-    countries: fetchCountries(),
+    countries: list,
   })
-  // console.log();
+  console.log(list)
 }
 
-
-
-
   render() {
-    
+
+    const { translations  } = this.state.countries
+    const { br } = translations
+
     return (
       <main>
-        <h1>Lista de países</h1>
+        <h1>{br}</h1>
       </main>
     )
   }
