@@ -24,8 +24,11 @@ export default class Main extends Component {
   }
 
   render () {
+    const { paises } = this.state;
     return (
-      <p>Montou</p>
+      <ul>
+        { paises.map((pais) => <li>{ pais.translations.br }</li>) }
+      </ul>
     );
   }
 }
