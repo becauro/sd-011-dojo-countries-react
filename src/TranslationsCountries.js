@@ -33,7 +33,7 @@ class TranslationsCountries extends React.Component {
     return (
       <div>
         <ol>
-          { countries.map((pais, index) => <li>{ pais } { flags[index]}</li>) }
+          { countries.map((pais, index) => <li>{ pais } <img src={`${flags[index]}`}/></li>) }
         </ol>
       </div>
     )
