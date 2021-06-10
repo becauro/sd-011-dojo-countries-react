@@ -1,7 +1,7 @@
 import React from 'react';
-import fetchAPI from './services/countries';
+import { fetchCountries }  from './services/countries';
 
-export default class CountriesList extends React.Component {
+class CountriesList extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -11,12 +11,12 @@ export default class CountriesList extends React.Component {
   }
 
   componentDidMount() {
-    const paises = fetchAPI()
+    this.handleFetchAPI();
   }
 
   async handleFetchAPI() {
-    const paises = await fetchAPI()
-    this.setState({ countriesList: paises[0] })
+    const paises = await fetchCountries()
+    this.setState({ countriesList: paises })
   }
 
   render() {
@@ -24,8 +24,14 @@ export default class CountriesList extends React.Component {
 
     return(
       <ul>
-        { countriesList.map(country => (<li>{country.translations.br}</li>)  ) }
+        { countriesList.map(country =>
+          (<li key={country.name}>
+            {country.translations.br}
+            <img src={country.flag} width='45px' />
+            </li>)  ) }
       </ul>
     );
   }
 }
+
+export default CountriesList;
