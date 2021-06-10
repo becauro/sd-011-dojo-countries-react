@@ -10,9 +10,22 @@ export default class RenderList extends Component {
     }
   }
 
+  
+
+  renderMapList(array) {
+    return array.map(({ translations: { br }, flag }, index ) => {
+      <div>
+        <p>{ br }</p>
+        <img src={ flag } /> 
+      </div>
+    });
+  }
+
   async componentDidMount() {
     const data = await fetchCountries();
     console.log(data);
+    const { translations: { br }, flag } = data;
+    
   }
 
   render() {
