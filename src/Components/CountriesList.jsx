@@ -8,6 +8,15 @@ export default class CountriesList extends Component {
       countries: [],
     }
   }
+
+  componentDidMount(){
+this.catchCountries();
+  }
+  
+  catchCountries() {
+    fetchCountries().then(response=>console.log(response)) 
+    
+  }
   render() {
     return (
       <div>
