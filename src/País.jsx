@@ -1,20 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './App.css';
 
 class País extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {
-      
-    }
+    this.state = {};
   }
 
   render() {
-    const { pais } = this.props;
+    const { pais, flag } = this.props;
     return (
-      <li>{ pais }</li>
-    )      
-    
+      <li>
+        {pais}
+        <img className="flagWidth" src={flag} alt={pais}></img>
+      </li>
+    );
   }
 }
 
