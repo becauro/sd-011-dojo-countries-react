@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import * as Countries from './services/countries';
+import * as countries from './services/countries';
 
 class App extends React.Component {
   componentDidMount() {
-    this.fetchCountries();
+    const req = countries.fetchCountries()
+    console.log(req)
   }
-  async fetchCountries() {
-    const requestCountries = await Countries.fetchCountries();
-    console.log(requestCountries);
-  }
+ 
   render() {
     return (
       <main>
