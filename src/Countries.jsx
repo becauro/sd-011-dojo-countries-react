@@ -21,8 +21,15 @@ class Countries extends React.Component {
   }
 
   render() {
+    const { countries } = this.state;
+
     return (
-      <h1>Countries</h1>
+      <div>
+        <h1>Countries</h1>
+        <ul>
+          { countries.map((country, index) => <li key={ index }>{ country.translations.br }</li>) }
+        </ul>
+      </div>
     )
   }
 }
