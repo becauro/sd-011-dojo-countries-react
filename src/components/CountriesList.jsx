@@ -13,7 +13,7 @@ export default class CountriesList extends Component {
   componentDidMount {
     this.setState({
       countries: 
-    })
+    });
     fetchCountries()
   }
 
