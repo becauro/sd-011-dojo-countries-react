@@ -10,17 +10,21 @@ export default class Countries extends Component {
   }
 
   componentDidMount() {
-    console.log(fetchCountries())
-    const arrayOfCoutries = [];
-    fetchCountries()
-    .then(response => this.setState({
-      countries: response.map((countrie) => arrayOfCoutries.push(countrie.translations.br))
-    )}
+    fetchCountries().then((countries) =>
+      this.setState({
+        countries: countries.map(({ translations: { br } }) => br),
+      })
+    );
   }
 
-
   render() {
-    console.log(this.state.countries)
-    return 
+    console.log(this.state.countries);
+    return (
+      <div>
+        {this.state.countries.map((country) => (
+          <p key={country}>{country}</p>
+        ))}
+      </div>
+    );
   }
 }
