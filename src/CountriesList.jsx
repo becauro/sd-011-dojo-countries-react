@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import fetchCountries from './services/countries'
 import Loading from './Loading';
+import { Link } from 'react-router-dom';
 
 export default class CountriesList extends Component {
   constructor() {
@@ -39,10 +40,11 @@ export default class CountriesList extends Component {
     const { loading, countries } = this.state;
     return loading ? <Loading/> : (
       <div>
+        <h1>Lista de países</h1>
         Filtrar países <input type="text" onChange={this.filterCountrie}></input>
         {countries.map(({name, translations, flag})=> {
           // console.log(currencies);
-        return <p key={ name }>{ translations.pt } <img className="img-flag" src={flag} alt={name} /></p>
+        return <Link to={`/details/${name.toLowerCase()}`}><p key={ name }>{ translations.pt } <img className="img-flag" src={flag} alt={name} /></p></Link>
         })}
       </div>
     )
