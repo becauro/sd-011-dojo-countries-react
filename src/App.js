@@ -8,8 +8,11 @@ class App extends React.Component {
     super();
 
     this.state = {
+      filterCountry: '',
       countries: [],
     }
+
+    this.changeFilterCountry = this.changeFilterCountry.bind(this);
   }
 
   async getCountries() {
@@ -18,17 +21,30 @@ class App extends React.Component {
       countries,
     })
   }
+
+  changeFilterCountry(e) {
+    this.setState({
+      filterCountry: e.target.value,
+    })
+  }
   
   componentDidMount() {
     this.getCountries();
   }
 
   render() {
-    const { countries } = this.state;
+    const { countries, filterCountry } = this.state;
 
     return (
       <main>
         <h1>Lista de países</h1>
+        <input
+          value={filterCountry}
+          onChange={this.changeFilterCountry}
+        />
+
+
+
         <CountryList countries={ countries } />
       </main>
     )
