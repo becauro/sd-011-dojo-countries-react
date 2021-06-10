@@ -1,15 +1,29 @@
 import React from 'react';
 import './App.css';
-import * as Paises from './services/countries';
+import {fetchCountries} from './services/countries';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      countries: {},
+    }
+  }
+
+  async componentDidMount() {
+    const paises = await fetchCountries();
+    this.setState({
+      countries: paises,
+    });
+  }
+
   render() {
-    const paises = Paises.fetchCountries();
-    console.log(paises);
+    const { countries } = this.state;
     return (
       <main>
         <ul>
-        {/* {.map((pais) => )} */}
+        {countries.map((countrie) => <li>{countrie.name}</li>)}
         </ul>
       </main>
     )
