@@ -17,17 +17,16 @@ async componentDidMount() {
   this.setState({
     countries: list,
   })
-  console.log(list)
+  console.log(list[0].translations.br)
 }
 
   render() {
 
-    const { translations  } = this.state.countries
-    const { br } = translations
+const { countries } = this.state;
 
     return (
       <main>
-        <h1>{br}</h1>
+        {countries.map((country) => (<h1> {country.translations.br} </h1>))}
       </main>
     )
   }
