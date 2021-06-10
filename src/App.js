@@ -26,7 +26,15 @@ const { countries } = this.state;
 
     return (
       <main>
-        {countries.map((country) => (<h1> {country.translations.br} </h1>))}
+        {countries.map((country) => {
+        return (
+          <div>
+          <h1> {country.translations.br} </h1>
+          <img src={country.flag} />
+          </div> 
+          )
+           
+        })}
       </main>
     )
   }
