@@ -27,7 +27,14 @@ export default class Main extends Component {
     const { paises } = this.state;
     return (
       <ul>
-        { paises.map((pais) => <li>{ pais.translations.br }</li>) }
+        { paises.map(({ translations, flag }) => 
+        (<li>
+          <img src={ flag } alt='imagem da bandeira' />
+          <span>
+          { translations.br }
+          </span>
+        </li>)) 
+        }
       </ul>
     );
   }
