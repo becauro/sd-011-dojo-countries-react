@@ -27,11 +27,11 @@ export default class CountriesList extends Component {
     return (
       <div>
         <ul>
-        {countries.map(({ flag, translations: { br } }) => {
+        {countries.map(({ flag, translations: { br } }) => (
           <li>
-
+            <img className="flag" src={flag} alt={br} />
           </li>
-        })}
+        ))}
         </ul>
       </div>
     );
