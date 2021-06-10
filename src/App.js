@@ -26,6 +26,9 @@ const { countries } = this.state;
 
     return (
       <main>
+        <label htmlFor="filterCountry">
+          <input type='text' name="filterCountry"></input>
+        </label>
         {countries.map((country) => {
         return (
           <div>
