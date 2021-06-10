@@ -8,15 +8,29 @@ class App extends React.Component {
     super();
 
     this.state = {
+      filterCountry: '',
       countries: [],
       searchField: '',
     }
+
+    this.changeFilterCountry = this.changeFilterCountry.bind(this);
   }
 
   async getCountries() {
     const countries = await fetchCountries();
     this.setState({
       countries,
+    })
+  }
+
+  changeFilterCountry(e) {
+    const filterCountry = e.target.value
+    this.setState((prevState) => {
+      const filteredCountries = prevState.countries.filter(({ translations: { br } }) => br.includes(filterCountry))
+      return {
+        filterCountry,
+        countries: filteredCountries
+      }
     })
   }
   
