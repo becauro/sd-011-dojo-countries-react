@@ -14,7 +14,7 @@ A pessoa piloto não pode falar nada, somente escutar. 🙊👂
 
 Quando se passarem 10 minutos, avisaremos para vocês trocarem as pessoas pilotos. A pessoa que estava pilotando deverá fazer um commit e um push para a branch do grupo.
 
-A nova pessoa piloto deverá fazer um pull e compartilhar sua tela para continuar a dinâmica.
+A nova pessoa piloto deverá fazer um pull e compartilhar sua tela para continuar a dinâmica
 
 A ordem das pessoas pilotos será definida de forma alfabética reversa, ou seja, em um grupo com Maria, João, José e Antônio, a ordem será:
 
