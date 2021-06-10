@@ -5,7 +5,7 @@ class CountriesList extends React.Component {
   constructor(){
     super()
     this.state({
-
+      countries: [],
     })
   }
 
@@ -15,16 +15,20 @@ class CountriesList extends React.Component {
 
   async createCountriesList(){
     const countries = await CountriesList()
-
+    this.setState({
+      countries,
+    })
   }
 
   render(){
+    const { countries } = this.state
     return (
       <div>
           {countries.map((countrie) => {
-            <Licountrie  countrie= {countrie.name}/>
-          }}
-                
+            <Licountrie  countrie= {countrie}/>
+          })
+        }
+          
           
 
       </div>
