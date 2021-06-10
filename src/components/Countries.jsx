@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import countries from '../services/countries';
+import { fetchCountries } from '../services/countries';
 
 export default class Countries extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  componentDidMount() {
+    console.log(fetchCountries())
+    fetchCountries().then(r=>console.log(r))
+  }
+
   render() {
-    return (
-      <div>
-      </div>
-    )
+    return <div></div>;
   }
 }
