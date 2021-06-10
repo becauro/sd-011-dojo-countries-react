@@ -29,6 +29,7 @@ export default class CountriesList extends Component {
         <ul>
         {countries.map(({ flag, translations: { br } }) => (
           <li>
+            <p>{br}</p>
             <img className="flag" src={flag} alt={br} />
           </li>
         ))}
