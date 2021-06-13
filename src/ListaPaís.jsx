@@ -27,10 +27,21 @@ export default function ListaPaís() {
     setInput(value);
   }
 
+  const filtredContry = (countries) => {
+    if (input) {
+      return countries.filter(({ translations, capital}) => (
+        (translations.br.toLowerCase().includes(input.toLowerCase()))
+        ||
+        (capital.toLowerCase().includes(input.toLowerCase()))
+      ));
+    }
+    return countries;
+  }
+
   if (isLoading) {
     return <Loading />;
   }
-  console.log(input.length);
+
   return (
     <section>
       <form>
@@ -39,6 +50,7 @@ export default function ListaPaís() {
             <input
               style={{border: '3px solid black'}}
               onChange={handleChange}
+              value={input}
               name="country"
               type="text"
             />
@@ -46,12 +58,11 @@ export default function ListaPaís() {
       </form>
       <div>
       {
-        !input ? countries.map((country) => 
+        filtredContry(countries).map((country) => 
         <Pais
           key={country.name}
           country={country}
         />)
-        : 'Filtred Country'
       }
       </div>
     </section>

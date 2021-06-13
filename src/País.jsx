@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function País({ country }) {
-  const { flag, name, capital, currencies, population } = country;
+  const { flag, translations, capital, currencies, population } = country;
+  const { br } = translations;
   
   return (
     <div>
-      <img width="300px" src={flag} alt={name} />
+      <img width="300px" src={flag} alt={br} />
+      <h2>Name: {br}</h2>
       <h3>Capital: {capital}</h3>
       <div>
         {currencies.map(({ code, name, symbol }) => {
