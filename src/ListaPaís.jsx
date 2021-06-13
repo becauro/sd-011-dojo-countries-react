@@ -26,12 +26,11 @@ export default function ListaPaís() {
   const handleChange = ({ target: { value } }) => {
     setInput(value);
   }
-  console.log(input);
 
   if (isLoading) {
     return <Loading />;
   }
-
+  console.log(input.length);
   return (
     <section>
       <form>
@@ -46,11 +45,14 @@ export default function ListaPaís() {
         </label>
       </form>
       <div>
-        {countries.map((country) => 
+      {
+        !input ? countries.map((country) => 
         <Pais
           key={country.name}
           country={country}
-        />)}
+        />)
+        : 'Filtred Country'
+      }
       </div>
     </section>
   )
