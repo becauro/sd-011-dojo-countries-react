@@ -43,7 +43,7 @@ export default function ListaPaís() {
   }
 
   return (
-    <section>
+    <>
       <form>
         <label>
             Digite um pais:
@@ -56,7 +56,7 @@ export default function ListaPaís() {
             />
         </label>
       </form>
-      <div>
+      <>
       {
         filtredContry(countries).map((country) => 
         <Pais
@@ -64,7 +64,7 @@ export default function ListaPaís() {
           country={country}
         />)
       }
-      </div>
-    </section>
+      </>
+    </  >
   )
 }

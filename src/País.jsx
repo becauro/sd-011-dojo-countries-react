@@ -6,21 +6,23 @@ export default function País({ country }) {
   const { br } = translations;
   
   return (
-    <div>
-      <img width="300px" src={flag} alt={br} />
-      <h2>Name: {br}</h2>
-      <h3>Capital: {capital}</h3>
+    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <img className="w-full lazy" src={flag} alt={br} />
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">Name: {br}</div>
+        <h3 className="text-gray-700 text-base">Capital: {capital}</h3>
+      </div>
       <div>
         {currencies.map(({ code, name, symbol }) => {
           return (
-          <div key={code}>
-            <p>Currency code: {code}</p>
-            <h4>Currency name: {name}</h4>
-            <p>Currency symbol: {symbol}</p>
+          <div key={code} className="px-6 py-4">
+            <p className="text-gray-700 text-base">Currency code: {code}</p>
+            <p className="text-gray-700 text-base">Currency name: {name}</p>
+            <p className="text-gray-700 text-base">Currency symbol: {symbol}</p>
+            <span className="text-gray-700 text-base">Population: {population}</span>
           </div>
           )
         })}
-        <span>Population: {population}</span>
       </div>
     </div>
   );
