@@ -1,14 +1,12 @@
 import React from 'react';
-import './App.css';
+import ListaPais from './ListaPaís';
 
-class App extends React.Component {
-  render() {
-    return (
-      <main>
-        <h1>Lista de países</h1>
-      </main>
-    )
-  }
+export default function App() {
+  return (
+    <main>
+      <article>
+        <ListaPais />
+      </article>
+    </main>
+  );
 }
-
-export default App;

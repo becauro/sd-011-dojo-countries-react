@@ -1,24 +1,57 @@
-import React, { Component } from 'react'
-import País from './País';
+import React, { useEffect, useState } from 'react';
+import * as data from './services/countries';
+import Pais from './País';
+import Loading from './Loading';
 
-class ListaPaís extends Component {
-  constructor(props) {
-    super(props)
+export default function ListaPaís() {
+  const [ countries, setCountries ] = useState([]);
+  const [ isLoading, setLoading ] = useState(true);
+  const [ input, setInput ] = useState('');
+  
+  useEffect(() => {
+    handleData();
+  }, []);
 
-    this.state = {
-      
+  const handleData = async () => {
+    setLoading(true);
+    try {
+    const response = await data.fetchCountries();
+      setLoading(false);
+      setCountries(response);
+    } catch (error) {
+      console.log(error);
     }
   }
 
-  async GetPaises() {
-    
+  const handleChange = ({ target: { value } }) => {
+    setInput(value);
+  }
+  console.log(input);
+
+  if (isLoading) {
+    return <Loading />;
   }
 
-  render() {
-    return (
-      <ul>{  }</ul>
-    )
-  }
+  return (
+    <section>
+      <form>
+        <label>
+            Digite um pais:
+            <input
+              style={{border: '3px solid black'}}
+              onChange={handleChange}
+              name="country"
+              type="text"
+            />
+        </label>
+      </form>
+      <div>
+        {countries.map((country) => 
+        <Pais
+          key={country.name}
+          country={country}
+        />)}
+      </div>
+    </section>
+  )
 }
-
-export default ListaPaís;
