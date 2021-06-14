@@ -5,17 +5,18 @@ export default class CountriesList extends Component {
   constructor() {
     super();
     this.state = {
-      filteredInput: "",
+      searchText: "",
       countries: [],
     }
     this.catchCountries = this.catchCountries.bind(this);
     this.handleChanges = this.handleChanges.bind(this);
+    this.filteredCountries = this.filteredCountries.bind(this);
   }
 
   componentDidMount(){
     this.catchCountries();
   }
-  
+
   catchCountries() {
     fetchCountries().then(response => {
       this.setState({
@@ -26,22 +27,30 @@ export default class CountriesList extends Component {
 
   handleChanges({ target }) {
     this.setState({
-      filteredInput: target.value,
+      searchText: target.value,
     })
+  }
 
+  filteredCountries () {
+    const { searchText, countries } = this.state;
+    return  countries.filter((country) => ( 
+      (country.translations.br.includes(searchText))
+    )) 
   }
 
   render() {
-    const { countries, filteredInput } = this.state;
+    const { searchText } = this.state;
+    const filteredCountries = this.filteredCountries();
     return (
       <div>
         <label>Digite um país
-          <input value={filteredInput} onChange={ this.handleChanges } />
+          <input value={searchText} onChange={ this.handleChanges } />
         </label>
         <ul>
-        {countries.map(({ flag, translations: { br } }) => (
+        { filteredCountries.map(({ capital, flag, translations: { br } }) => (
           <li key={ br }>
             <p>{ br }</p>
+            <p>{ capital } </p>
             <img className="flag" src={flag} alt={br} />
           </li>
         ))}
